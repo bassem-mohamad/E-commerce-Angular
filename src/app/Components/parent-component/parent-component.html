@@ -1,0 +1,49 @@
+
+<!-- <div class="container" >
+  <form class="mt-2" >
+      <input [(ngModel)]="FilterByNameInParent"  [ngModelOptions]="{standalone: true}"  type="text" class=" form-control" />
+    </form>
+</div> -->
+
+<div class="container my-4">
+  <div class="position-relative" style="max-width: 400px; margin: auto;">
+    <input
+      [(ngModel)]="FilterByNameInParent"
+      [ngModelOptions]="{standalone: true}"
+      type="text"
+      class="form-control py-2 ps-5 shadow-sm"
+      placeholder="Search products..."
+      style="border-radius: 0.5rem;"
+    />
+    <span class="position-absolute top-50 start-0 translate-middle-y ps-3 text-muted">
+      <i class="fas fa-search"></i>
+    </span>
+  </div>
+</div>
+
+
+<app-product (productEvent)="addToCartInParent($event)" [FilterByNameInChild]="FilterByNameInParent"></app-product>
+
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>totalPrice</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (i of prodList; track i.id) {
+
+      <tr>
+        <td>{{i.productName}}</td>
+        <td>{{i.productPrice}}</td>
+        <td>{{i.productQuantity}}</td>
+        <td> {{i.productPrice*i.productQuantity}}</td>
+      </tr>
+    }
+  </tbody>
+</table>
+

@@ -1,0 +1,22 @@
+<!-- send data ts ==> html -->
+
+<!-- data binding , one way binding ts ===> html -->
+<!--  interpolation {{prop}} -->
+
+<h1>{{ storeProp.Name }}</h1>
+<img src="{{ storeProp.Logo }}" />
+
+<ul>
+  <!-- <li>{{storeProp.storeBranches[0]}}</li>
+  <li>{{storeProp.storeBranches[1]}}</li> -->
+
+  <!-- for loop -->
+  <!-- @for(anyname of arrayname ; track i ){
+contetnthtml
+ } -->
+
+  @for(i of storeProp.Branches; track i){
+  <li>{{ i }}</li>
+  }
+</ul>
+<app-product></app-product>

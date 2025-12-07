@@ -1,0 +1,130 @@
+<div class="form-container">
+  <h2 class="form-header">Add New Product</h2>
+  <form (ngSubmit)="addProduct()" #productForm="ngForm">
+    <div class="mb-3">
+      <label for="name" class="form-label">Product Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        required
+        [(ngModel)]="product.productName"
+        name="name"
+        #nameInput="ngModel"
+        [ngClass]="{
+          'is-invalid': (nameInput.touched || nameInput.dirty) && nameInput.invalid,
+          'is-valid': nameInput.valid
+        }"
+      />
+      <div class="invalid-feedback">
+        @if( nameInput.errors?.['required']){
+        <p>Product name is required</p>
+        }
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="Quatity" class="form-label">Quatity</label>
+      <input
+        type="number"
+        class="form-control"
+        id="Quatity"
+        required
+        [(ngModel)]="product.productQuantity"
+        name="price"
+        #QuatityInput="ngModel"
+        [ngClass]="{
+          'is-invalid': (QuatityInput.touched || QuatityInput.dirty) && QuatityInput.invalid,
+          'is-valid': QuatityInput.valid
+        }"
+      />
+      <div class="invalid-feedback">
+        @if( priceInput.errors?.['required']){
+        <p>Price is required</p>
+        }
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="price" class="form-label">Price</label>
+      <input
+        type="number"
+        class="form-control"
+        id="price"
+        required
+        [(ngModel)]="product.productPrice"
+        name="price"
+        #priceInput="ngModel"
+        [ngClass]="{
+          'is-invalid': (priceInput.touched || priceInput.dirty) && priceInput.invalid,
+          'is-valid': priceInput.valid
+        }"
+      />
+      <div class="invalid-feedback">
+        @if( priceInput.errors?.['required']){
+        <p>Price is required</p>
+        }
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="Image" class="form-label">Image</label>
+      <textarea
+        class="form-control"
+        id="Image"
+        [(ngModel)]="product.productImgUrl"
+        name="Image"
+        #ImageInput="ngModel"
+      ></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="Details" class="form-label">productDetails</label>
+      <textarea
+        class="form-control"
+        id="Details"
+        rows="3"
+        required
+        [(ngModel)]="product.productDetails"
+        name="Details"
+        #DetailsInput="ngModel"
+        [ngClass]="{
+          'is-invalid': (DetailsInput.touched || DetailsInput.dirty) && DetailsInput.invalid,
+          'is-valid': DetailsInput.valid
+        }"
+      ></textarea>
+      <div class="invalid-feedback">
+        @if( DetailsInput.errors?.['required']){
+        <p>Details is required</p>
+        }
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="Category" class="form-label">Category</label>
+      <input
+      type="number"
+      class="form-control"
+        id="Category"
+        required
+        [(ngModel)]="product.categoryId"
+        name="Category"
+        #CategoryInput="ngModel"
+        [ngClass]="{
+          'is-invalid': (CategoryInput.touched || CategoryInput.dirty) && CategoryInput.invalid,
+          'is-valid': CategoryInput.valid
+        }"
+      >
+      <div class="invalid-feedback">
+        @if(CategoryInput.errors?.['required']){
+        <p>CategoryInput is required</p>
+        }
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="productForm.invalid">
+      Add Product
+    </button>
+  </form>
+</div>
+

@@ -1,0 +1,71 @@
+<!-- <p>{{totalPrice}}</p> -->
+<p></p>
+<!-- search -->
+<!-- <form action="" class="mb-4">
+        <input type="text"
+               class="form-control"
+               placeholder="Search Products..."
+               [(ngModel)]="FilterByName"  [ngModelOptions]="{standalone: true}"
+               name="FilterByName">
+    </form> -->
+
+<div class="container">
+  <!-- <form class="mt-2">
+      <input [(ngModel)]="FilterByName"  [ngModelOptions]="{standalone: true}"  type="text" class=" form-control" />
+    </form> -->
+  <!-- <p>totalPrice  {{totalPrice}}</p>
+    <p>Date  {{date | date}}</p>
+    <p>custom pipe {{card | cardPipe }}</p> -->
+  <div class="row">
+    @for (item of productsAfterSearch; track item.id) {
+    <div class="col-3 mb-3">
+      <!-- <div class="card" style="width: 18rem;"> -->
+      <div appCardStyle color1="green" class="card" style="width: 18rem">
+        <img src="{{ item.productImgUrl }}" class="card-img-top" alt="Product" />
+
+        <div class="card-body">
+          <h5 class="card-title">{{ item.productName }}</h5>
+
+          <!-- <h5 class="card-title fw-bold mb-3 text-dark" [style.background-color]="item.productQuantity==0?'red':'Green'">{{ item.productName }}</h5> -->
+          <!-- <h5 class="product-name" [ngClass]="{'bg-danger':item.productQuantity==0}">{{item.productName}}</h5>
+
+         <h5 class="product-name" [class.bg-danger]="item.productQuantity==0">{{item.productName}}</h5>
+        <h5 class="product-name" [ngStyle]="{'background-color':item.productQuantity==0?'red':'green'}">{{item.productName}}</h5> -->
+
+          <p>{{ item.productPrice | currency }} EGP</p>
+          <p>Qty: {{ item.productQuantity }}</p>
+
+          <!-- <button href="#" class="btn btn-primary" [hidden]="item.productQuantity==0">add to cart</button> -->
+          <!-- <button href="#" class="btn btn-primary" [disabled]="item.productQuantity==0">add to cart</button> -->
+
+          <!-- @if(item.productQuantity ==0) {out of stock}
+            @else {
+              <button href="#" class="btn btn-primary">add to cart</button>
+            } -->
+          <div class="d-flex justify-content-between"></div>
+          @switch (item.productQuantity){ @case (0) {
+          <p class="text-danger">out of stock</p>
+          } @case (1) {
+          <p class="text-warning">last item in stock</p>
+
+          } @default {
+          <p class="text-success">in stock</p>
+
+          }}
+          <div class="d-flex justify-content-between">
+          <!-- <button (click)="addtocart(item)" href="#" class="btn btn-primary">add to cart</button> -->
+          <button (click)="addtocartInChild(item)" href="#" class="btn btn-primary">
+            add to cart
+          </button>
+
+          <!-- Day05 -->
+          <button [routerLink]="['/products/', item.id]" class="btn btn-primary">Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    }@empty {
+    <p class="text-danger text-center">no products</p>
+    }
+  </div>
+</div>
